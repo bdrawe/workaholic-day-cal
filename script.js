@@ -1,34 +1,63 @@
 //Declare global variables
-todoItems = [];
+todoItems = [
+    "","","","","","","","",
+];
 
-//Current day is displayed at the top of the calendar
+//**DONE** Current day is displayed at the top of the calendar 
 var today = $("#currentDay")
-    .html(moment().format("dddd, MMM Do"));
+    .text(moment().format("dddd, MMM Do"));
 
 //Color Coded time blocks to indicate whether it is in past, present, or the future
 
 
-//When I click the time block I can enter an event
+//**DONE** When I click the time block I can enter an event
 $(".row").on("click",".col-10", function(){
-
-    var task = $(this)
+    var text = $(this)
         .text()
+        .trim()
+    //     console.log(text);
+    
+    // // //create textarea  element
+    // var newTask = $("<textarea>")
+    //     .addClass("form-control col-10")
+    //     .val(text);
+    
+    //     $(this).replaceWith(newTask);
+    //     newTask.trigger("focus");
+
+});
+
+$(".col-10").on("blur", "textarea",function(){
+    var getText = $(this)
+        .val()
         .trim();
+    console.log(getText);
+//     var timeFrame =$(this)
+//         .closest(".col-10")
+//         .attr("id")
+//         .replace("list-","");
+});
+
+//Edit a task
 
 
-    //create textarea  element
-    var newTask = $("<textarea>")
-        .addClass("form-control col-10");
-
-    $(this).replaceWith(newTask);
-    newTask.trigger("focus");
-    
-    
-    
-})
 
 
 //when I click the save block, it will save into local storage && On refresh events will persist
 $(".saveBtn").on("click", function(){
+    var getText = $(this).siblings(".col-10").val();
+    var getTextId = $(this).siblings(".col-10").attr("id");
+    console.log(getTextId);
+    //var newTextId = parseInt(getTextId);
+    // console.log(newTextId);
+    // console.log(todoItems);
+    // //create and array of strings
+    //modify the strings
+    todoItems[getTextId]= getText;
+    // console.log(todoItems);
+  
+
+    
+
     localStorage.setItem('todoItems',JSON.stringify(todoItems))
-})
+});
