@@ -2,6 +2,8 @@
 todoItems = [
     "","","","","","","","",
 ];
+//Load previously saved tasks
+localStorage.getItem(JSON.parseInt("todoItems"));
 
 //**DONE** Current day is displayed at the top of the calendar 
 var today = $("#currentDay")
@@ -27,23 +29,8 @@ $(".row").on("click",".col-10", function(){
 
 });
 
-$(".col-10").on("blur", "textarea",function(){
-    var getText = $(this)
-        .val()
-        .trim();
-    console.log(getText);
-//     var timeFrame =$(this)
-//         .closest(".col-10")
-//         .attr("id")
-//         .replace("list-","");
-});
 
-//Edit a task
-
-
-
-
-//when I click the save block, it will save into local storage && On refresh events will persist
+//**DONE**when I click the save block, it will save into local storage && On refresh events will persist
 $(".saveBtn").on("click", function(){
     var getText = $(this).siblings(".col-10").val();
     var getTextId = $(this).siblings(".col-10").attr("id");
