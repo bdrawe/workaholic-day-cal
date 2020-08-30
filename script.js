@@ -48,6 +48,7 @@ var timeAudit = function () {
     })
 
 }
+timeAudit();
 var timerFunction = setInterval (function(){
     timeAudit()
 } ,1800000)
