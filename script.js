@@ -1,20 +1,20 @@
 //Declare global variables
 todoItems = [
-    "","","","","","","","",
+    "", "", "", "", "", "", "", "",
 ];
 
 
 //**DONE** Load previously saved tasks
-var loadTasks = function(){
-todoItems = JSON.parse(localStorage.getItem("todoItems"));
-$("#0").val(todoItems[0]);
-$("#1").val(todoItems[1]);
-$("#2").val(todoItems[2]);
-$("#3").val(todoItems[3]);
-$("#4").val(todoItems[4]);
-$("#5").val(todoItems[5]);
-$("#6").val(todoItems[6]);
-$("#7").val(todoItems[7]);
+var loadTasks = function () {
+    todoItems = JSON.parse(localStorage.getItem("todoItems"));
+    $("#0").val(todoItems[0]);
+    $("#1").val(todoItems[1]);
+    $("#2").val(todoItems[2]);
+    $("#3").val(todoItems[3]);
+    $("#4").val(todoItems[4]);
+    $("#5").val(todoItems[5]);
+    $("#6").val(todoItems[6]);
+    $("#7").val(todoItems[7]);
 }
 loadTasks();
 
@@ -24,36 +24,54 @@ var today = $("#currentDay")
     .text(moment().format("dddd, MMM Do"));
 
 //Color Coded time blocks to indicate whether it is in past, present, or the future
-var timeArr = ["9","10","11","12","1","2","3","4","5"];
-// idCounter = 0;
-// var randomFormat = "hA"
-// var times = $(".hour");
 
-// // var convertedDate = moment(timeArr[0],randomFormat)
-// for(var i = 0; i< timeArr.length; i++){
-//     console.log("Test & " + timeArr[i]);
-//     times.text(moment(i).format("hA"));
-//     i++
-// }
+var timeAudit = function () {
 
-    // return(convertedDated)
-timeArr.forEach(function(){
-    $(this).text(moment(timeArr).format("hA"))
-});
+    var timeArr = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
+    var indexCounter = 0;
+    var currentTime = moment().format("hA");
+
+    $(".hour").each(function () {
+        $(this).text(timeArr[indexCounter]);
+       
+            $(this).closest(".row").children(".col-10").removeClass("present past future");
+
+            if ($(this).text() === currentTime) {
+                $(this).closest(".row").children(".col-10").addClass("present");
+            } else if($(this).text() === moment().isAfter()){
+                $(this).closest(".row").children(".col-10").addClass("future");
+            }else {
+                $(this).closest(".row").children(".col-10").addClass("past");
+            }
+            indexCounter++
+
+    })
+
+}
+var timerFunction = setInterval (function(){
+    timeAudit()
+} ,1800000)
+// timeAudit();
+
+
+// return(convertedDated)
+// timeArr.forEach(function(){
+//     $(".hour").text(moment(timeArr).format("hA"))
+// });
 
 // var convertedDate = moment(timeArr[i], randomFormat); 
 // timeArr.forEach(function(){
 //     $(".hour").text(convertedDate.format("hA"));
 // })
 
- 
- 
+
+
 
 
 
 
 //**DONE** When I click the time block I can enter an event
-var createItem = $(".row").on("click",".col-10", function(){
+var createItem = $(".row").on("click", ".col-10", function () {
     var text = $(this)
         .text()
         .trim()
@@ -61,10 +79,10 @@ var createItem = $(".row").on("click",".col-10", function(){
 
 
 //**DONE**when I click the save block, it will save into local storage && On refresh events will persist
-$(".saveBtn").on("click", function(){
+$(".saveBtn").on("click", function () {
     var getText = $(this).siblings(".col-10").val();
     var getTextId = $(this).siblings(".col-10").attr("id");
-    
-    todoItems[getTextId]= getText;
-    localStorage.setItem('todoItems',JSON.stringify(todoItems))
+
+    todoItems[getTextId] = getText;
+    localStorage.setItem('todoItems', JSON.stringify(todoItems))
 });
