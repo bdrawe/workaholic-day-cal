@@ -21,6 +21,7 @@ var loadTasks = function () {
     $("#6").val(todoItems[6]);
     $("#7").val(todoItems[7]);
 }
+}
 
 loadTasks();
 
