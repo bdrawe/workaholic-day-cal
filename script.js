@@ -10,8 +10,7 @@ var loadTasks = function () {
     todoItems = JSON.parse(localStorage.getItem("todoItems"));
     if(todoItems === null){
        todoItems = ["","","","","","","",""]
-    } else {
-    
+    } else { 
     $("#0").val(todoItems[0]);
     $("#1").val(todoItems[1]);
     $("#2").val(todoItems[2]);
@@ -20,7 +19,7 @@ var loadTasks = function () {
     $("#5").val(todoItems[5]);
     $("#6").val(todoItems[6]);
     $("#7").val(todoItems[7]);
-}
+};
 }
 
 loadTasks();
