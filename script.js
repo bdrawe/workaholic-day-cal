@@ -57,8 +57,9 @@ var timeAudit = function () {
 timeAudit();
 var timerFunction = setInterval (function(){
     timeAudit()
-} ,1800000)
+} ,1000)
 // timeAudit();
+// 1800000
 
 
 // return(convertedDated)
