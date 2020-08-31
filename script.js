@@ -57,24 +57,7 @@ var timeAudit = function () {
 timeAudit();
 var timerFunction = setInterval (function(){
     timeAudit()
-} ,1000)
-// timeAudit();
-// 1800000
-
-
-// return(convertedDated)
-// timeArr.forEach(function(){
-//     $(".hour").text(moment(timeArr).format("hA"))
-// });
-
-// var convertedDate = moment(timeArr[i], randomFormat); 
-// timeArr.forEach(function(){
-//     $(".hour").text(convertedDate.format("hA"));
-// })
-
-
-
-
+} ,180000)
 
 
 
