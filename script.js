@@ -7,6 +7,18 @@ todoItems = [
 //**DONE** Load previously saved tasks
 var loadTasks = function () {
     todoItems = JSON.parse(localStorage.getItem("todoItems"));
+    if(!todoItems){
+        todoItems[0]="";
+        todoItems[1]="";
+        todoItems[2]="";
+        todoItems[3]="";
+        todoItems[4]="";
+        todoItems[5]="";
+        todoItems[6]="";
+        todoItems[7]="";
+        todoItems[8]="";
+    }else {
+    
     $("#0").val(todoItems[0]);
     $("#1").val(todoItems[1]);
     $("#2").val(todoItems[2]);
@@ -15,6 +27,7 @@ var loadTasks = function () {
     $("#5").val(todoItems[5]);
     $("#6").val(todoItems[6]);
     $("#7").val(todoItems[7]);
+}
 }
 loadTasks();
 
