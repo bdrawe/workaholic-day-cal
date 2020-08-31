@@ -45,9 +45,9 @@ var timeAudit = function () {
             if ($(this).text() === currentTime) {
                 $(this).closest(".row").children(".col-10").addClass("present");
             } else if($(this).text() === moment().isAfter()){
-                $(this).closest(".row").children(".col-10").addClass("future");
-            }else {
                 $(this).closest(".row").children(".col-10").addClass("past");
+            }else {
+                $(this).closest(".row").children(".col-10").addClass("future");
             }
             indexCounter++
 
