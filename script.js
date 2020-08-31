@@ -8,7 +8,7 @@ todoItems = [
 var loadTasks = function () {
     
     todoItems = JSON.parse(localStorage.getItem("todoItems"));
-    if(!todoItems){
+    if(todoItems === null){
        todoItems = ["","","","","","","",""]
     } else {
     
