@@ -13,4 +13,5 @@
 * Displays the current date.
 
 ## Images
-![website](AwesomeScreenshot-8_30_2020,5 51 39PM.gif)
+![website-img-1](shot-1.png)
+![website-img-2](shot-2.png)
