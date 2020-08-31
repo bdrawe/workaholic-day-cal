@@ -6,6 +6,9 @@ todoItems = [
 
 //**DONE** Load previously saved tasks
 var loadTasks = function () {
+    todoItems = [
+        "", "", "", "", "", "", "", "",
+    ];
     todoItems = JSON.parse(localStorage.getItem("todoItems"));
     if(todoItems){
         todoItems[0]="";
