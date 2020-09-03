@@ -33,9 +33,15 @@ var today = $("#currentDay")
 
 var timeAudit = function () {
 
-    var timeArr = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
+    var timeArr = ["09AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
+    
     var indexCounter = 0;
     var currentTime = moment().format("hA");
+    // console.log(currentTime);
+    // console.log("6PM");
+    // console.log(typeof currentTime);
+    // console.log(typeof "5PM");
+    // console.log(currentTime === "6PM");
 
     $(".hour").each(function () {
         $(this).text(timeArr[indexCounter]);
@@ -43,8 +49,8 @@ var timeAudit = function () {
             $(this).closest(".row").children(".col-10").removeClass("present past future");
 
             if ($(this).text() === currentTime) {
-                $(this).closest(".row").children(".col-10").addClass("present");
-            } else if($(this).text() === moment().isBefore()){
+                $(this).closest(".row").children(".col-10").addClass("present"); 
+            } else if($(this).text() > currentTime){
                 $(this).closest(".row").children(".col-10").addClass("future");
             }else {
                 $(this).closest(".row").children(".col-10").addClass("past");
